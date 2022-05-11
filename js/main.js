@@ -26,9 +26,9 @@ const autoLearnElement = document.getElementById("autoLearn")
 
 const updateSpeed = 20
 
-const baseLifespan = 365 * 70
+const baseLifespan = 365 * 7000
 
-const baseGameSpeed = 4
+const baseGameSpeed = 400
 
 const permanentUnlocks = ["Scheduling", "Shop", "Automation", "Quick task display"]
 
@@ -39,6 +39,7 @@ const jobBaseData = {
     "Miner": {name: "Miner", maxXp: 400, income: 40},
     "Blacksmith": {name: "Blacksmith", maxXp: 800, income: 80},
     "Merchant": {name: "Merchant", maxXp: 1600, income: 150},
+    "Nurse": {name: "Nurse", maxXp: 3200, income: 300},
 
     "Squire": {name: "Squire", maxXp: 100, income: 5},
     "Footman": {name: "Footman", maxXp: 1000, income: 50},
@@ -102,7 +103,7 @@ const itemBaseData = {
 }
 
 const jobCategories = {
-    "Common work": ["Beggar", "Farmer", "Fisherman", "Miner", "Blacksmith", "Merchant"],
+    "Common work": ["Beggar", "Farmer", "Fisherman", "Miner", "Blacksmith", "Merchant", "Nurse"],
     "Military" : ["Squire", "Footman", "Veteran footman", "Knight", "Veteran knight", "Elite knight", "Holy knight", "Legendary knight"],
     "The Arcane Association" : ["Student", "Apprentice mage", "Mage", "Wizard", "Master wizard", "Chairman"]
 }
@@ -138,6 +139,7 @@ const tooltips = {
     "Miner": "Delve into dangerous caverns and mine valuable ores. The pay is quite meager compared to the risk involved.",
     "Blacksmith": "Smelt ores and carefully forge weapons for the military. A respectable and OK paying commoner job.",
     "Merchant": "Travel from town to town, bartering fine goods. The job pays decently well and is a lot less manually-intensive.",
+    "Nurse": "Unpleasant, but pays well",
 
     "Squire": "Carry around your knight's shield and sword along the battlefield. Very meager pay but the work experience is quite valuable.",
     "Footman": "Put down your life to battle with enemy soldiers. A courageous, respectable job but you are still worthless in the grand scheme of things.",
@@ -1074,6 +1076,7 @@ gameData.requirements = {
     "Miner": new TaskRequirement([getTaskElement("Miner")], [{task: "Strength", requirement: 10}, {task: "Fisherman", requirement: 10}]),
     "Blacksmith": new TaskRequirement([getTaskElement("Blacksmith")], [{task: "Strength", requirement: 30}, {task: "Miner", requirement: 10}]),
     "Merchant": new TaskRequirement([getTaskElement("Merchant")], [{task: "Bargaining", requirement: 50}, {task: "Blacksmith", requirement: 10}]),
+    "Nurse": new TaskRequirement([getTaskElement("Nurse")], [{task: "Concentration", requirement: 75}, {task: "Merchant", requirement: 10}]),
 
     //Military 
     "Squire": new TaskRequirement([getTaskElement("Squire")], [{task: "Strength", requirement: 5}]),
